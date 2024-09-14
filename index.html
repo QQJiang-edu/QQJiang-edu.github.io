@@ -62,7 +62,6 @@
             margin: 0 auto;
         }
 
-        /* 新增 Hobbies 部分的照片网格布局，排列成3×2的矩阵 */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3列 */
@@ -77,6 +76,15 @@
             object-fit: cover;
             border-radius: 8px;
         }
+        
+        .education-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .education-list li {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +93,7 @@
     <nav>
         <ul>
             <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#hobbies">Hobbies</a></li>
@@ -106,6 +115,22 @@
             <h2>About Me</h2>
             <p>I am Qingqing Jiang, a master's student in the School of Earth and Space Sciences at Peking University. My primary research interests include geology, paleoclimatology, and astronomical chronology, with a focus on the Paleocene-Eocene Thermal Maximum (PETM). I am also exploring Earth system models to understand the orbital forcing on climate systems.</p>
             <p>Advisor:Assistant Professor Mingsong Li<p>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>Education</h2>
+            <ul class="education-list">
+                <li>
+                    <strong>2022-2025</strong> Peking University<br>
+                    M.S., Geology<br>
+                    Advisor: Professor Mingsong Li
+                </li>
+                <li>
+                    <strong>2018-2022</strong> China University of Geosciences (Beijing)<br>
+                    B.E., Resource Exploration Engineering
+                </li>
+            </ul>
         </section>
 
         <!-- Research -->
