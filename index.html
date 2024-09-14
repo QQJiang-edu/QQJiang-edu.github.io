@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Page</title>
+    <title>Qingqing Jiang's Personal Page</title>
     <style>
-        /* 样式：为导航栏和页面内容增加一些简单的样式 */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
+            padding: 20px;
             background-color: #f4f4f4;
-        }
-
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
+            margin: 0;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            margin: 0;
-            padding: 0;
+            padding: 10px 0;
+            background-color: #333;
         }
 
         nav ul li {
@@ -34,21 +28,32 @@
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
         }
 
         nav ul li a:hover {
             text-decoration: underline;
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 50px;
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
         }
 
-        p {
+        h1, h2 {
             text-align: center;
-            margin-top: 20px;
+        }
+
+        .profile-pic {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -57,17 +62,56 @@
     <!-- 导航栏 -->
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- 页面内容 -->
-    <h1>Hello, This is Qingqing Jiang!</h1>
-    <p>Nice to see you!</p>
+    <!-- 主页 -->
+    <div class="container">
+        <h1>Welcome to Qingqing Jiang's Personal Page</h1>
+
+        <!-- 添加个人照片 -->
+        <img src="profile-1.jpg" alt="Qingqing Jiang's Photo" class="profile-pic">
+
+        <!-- About Me -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am Qingqing Jiang, a master's student at Peking University. My primary research interests include geology, paleoclimatology, and astronomical chronology, with a focus on the Paleocene-Eocene Thermal Maximum (PETM). I am also exploring Earth system models to understand the orbital forcing on climate systems.</p>
+        </section>
+
+        <!-- Research -->
+        <section id="research">
+            <h2>Research</h2>
+            <p>My research focuses on the Paleocene-Eocene Thermal Maximum (PETM), investigating its climatic and sedimentological impacts using methods like XRF analysis and astronomical chronology.</p>
+            <ul>
+                <li>Sedimentation rates and orbital forcing during the PETM.</li>
+                <li>Earth system modeling using cGENIE to simulate climate impacts.</li>
+            </ul>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications">
+            <h2>Publications</h2>
+            <p><strong>In Prep.</strong></p>
+            <ul>
+                <li><strong>Astrochronology of Paleocene-Eocene Thermal Maximum at ODP Site 1172</strong></li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me at:</p>
+            <ul>
+                <li><strong>Email</strong>: qqjiang@stu.pku.edu.cn</li>
+                <li><strong>ResearchGate</strong>: <a href="https://www.researchgate.net/profile/Qingqing-Jiang-2" target="_blank">Qingqing Jiang</a></li>
+                <li><strong>Address</strong>: No.5 Yiheyuan Road, Haidian District, Beijing 100871, P.R.China</li>
+            </ul>
+        </section>
+    </div>
 
 </body>
 </html>
