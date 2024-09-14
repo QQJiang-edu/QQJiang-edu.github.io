@@ -43,12 +43,18 @@
             text-align: center;
         }
 
+        .profile-pic-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
         .profile-pic {
-            display: block;
-            margin: 0 auto;
             width: 150px;
             height: 150px;
             border-radius: 50%;
+            object-fit: cover; /* 保持比例，并裁切成圆形 */
         }
 
         .container {
@@ -74,7 +80,9 @@
         <h1>Welcome to Qingqing Jiang's Personal Page</h1>
 
         <!-- 添加个人照片 -->
-        <img src="profile-1.jpg" alt="Qingqing Jiang's Photo" class="profile-pic">
+        <div class="profile-pic-container">
+            <img src="profile-1.jpg" alt="Qingqing Jiang's Photo" class="profile-pic">
+        </div>
 
         <!-- About Me -->
         <section id="about">
@@ -85,7 +93,7 @@
         <!-- Research -->
         <section id="research">
             <h2>Research</h2>
-            <p>My research focuses on the Paleocene-Eocene Thermal Maximum (PETM), investigating its climatic and sedimentological impacts using methods like XRF analysis and astronomical chronology.</p>
+            <p>My research focuses on the Paleocene-Eocene Thermal Maximum (PETM), investigating its climatic and sedimentological impacts using  XRF analysis and astronomical chronology.</p>
             <ul>
                 <li>Sedimentation rates and orbital forcing during the PETM.</li>
                 <li>Earth system modeling using cGENIE to simulate climate impacts.</li>
