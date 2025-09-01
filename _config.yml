@@ -1,3 +1,5 @@
-theme: minima
+theme: null
 title: Qingqing Jiang's Personal Website
 description: About me
+markdowm: kramdown
+permalink: /blog/:year/:month/:day/:title
