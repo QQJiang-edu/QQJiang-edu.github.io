@@ -81,6 +81,9 @@
         }
 
         .container {
+            position: relative;
+            z-index: 3;
+
             max-width: 900px;
             margin: 0 auto 0 calc(240px + (100vw - 240px - 900px) / 2);
             padding: 36px 48px;
@@ -89,6 +92,43 @@
             background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 0 28px rgba(0, 0, 0, 0.18);
             backdrop-filter: blur(6px);
+        }
+
+        /* Decorative stickers*/
+        .sticker-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .sticker {
+            position: absolute;
+            width: 90px;
+            height: auto;
+            opacity: 0.95;
+            filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.18));
+        }
+
+        /* 正文左边 */
+        .sticker-1 {
+            left: calc(240px + (100vw - 240px - 900px) / 2 - 120px);
+            top: 120px;
+            transform: rotate(-10deg);
+        }
+
+        /* 正文右边 */
+        .sticker-2 {
+            left: calc(240px + (100vw - 240px - 900px) / 2 + 920px);
+            top: 220px;
+            transform: rotate(8deg);
+        }
+
+        /* 正文左边 */
+        .sticker-3 {
+            left: calc(240px + (100vw - 240px - 900px) / 2 - 110px);
+            top: 500px;
+            transform: rotate(7deg);
         }
 
         .photo-grid {
@@ -117,9 +157,9 @@
             margin-bottom: 15px;
         }
 
-        @media (max-width: 1180px) {
-            .container {
-                margin-left: 240px;
+        @media (max-width: 1350px) {
+            .sticker-layer {
+                display: none;
             }
         }
 
@@ -281,17 +321,11 @@
 
     <!-- Decorative stickers -->
     <div class="sticker-layer">
-        <img src="assets/img/robot.png"
-             class="sticker sticker-1"
-             alt="">
+        <img src="assets/img/robot.png" class="sticker sticker-1" alt="">
 
-        <img src="assets/img/sausage-dog.png"
-             class="sticker sticker-2"
-             alt="">
+        <img src="assets/img/sausage-dog.png" class="sticker sticker-2" alt="">
 
-        <img src="assets/img/tokyokombat.png"
-             class="sticker sticker-3"
-             alt="">
+        <img src="assets/img/tokyokombat.png" class="sticker sticker-3" alt="">
     </div>
 
     <!-- 导航栏 -->
@@ -483,14 +517,14 @@
         let touchEndX = 0;
 
 
-        document.addEventListener("touchstart", function(event) {
+        document.addEventListener("touchstart", function (event) {
 
             touchStartX = event.changedTouches[0].screenX;
 
         });
 
 
-        document.addEventListener("touchend", function(event) {
+        document.addEventListener("touchend", function (event) {
 
             touchEndX = event.changedTouches[0].screenX;
 
