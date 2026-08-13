@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +61,8 @@
             scroll-margin-top: 24px;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             text-align: center;
         }
 
@@ -91,8 +93,10 @@
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3列 */
-            grid-template-rows: repeat(2, 150px); /* 2行 */
+            grid-template-columns: repeat(3, 1fr);
+            /* 3列 */
+            grid-template-rows: repeat(2, 150px);
+            /* 2行 */
             gap: 10px;
             margin: 20px 0;
         }
@@ -103,7 +107,7 @@
             object-fit: cover;
             border-radius: 8px;
         }
-        
+
         .education-list {
             list-style-type: none;
             padding-left: 0;
@@ -114,35 +118,139 @@
         }
 
         @media (max-width: 1180px) {
-            .container { margin-left: 240px; }
+            .container {
+                margin-left: 240px;
+            }
         }
 
+        /*桌面端不显示菜单按钮*/
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-overlay {
+            display: none;
+        }
+
+
         @media (max-width: 700px) {
+
+            /* =========================
+            Mobile navigation drawer
+            ========================= */
+
             nav {
-                display: none;
+                display: block;
+
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                width: 240px;
+                height: 100vh;
+
+                padding: 70px 20px 30px;
+
+                background: rgba(34, 27, 22, 0.95);
+                backdrop-filter: blur(10px);
+
+                z-index: 1000;
+
+                /* 默认藏在左边 */
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+
+                box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
             }
 
+
+            /* 导航栏打开 */
+            nav.open {
+                transform: translateX(0);
+            }
+
+
+            /* 菜单按钮 */
+            .menu-toggle {
+                display: flex;
+
+                position: fixed;
+                top: 15px;
+                left: 15px;
+
+                width: 42px;
+                height: 42px;
+
+                align-items: center;
+                justify-content: center;
+
+                border: none;
+                border-radius: 50%;
+
+                background: rgba(34, 27, 22, 0.85);
+                color: white;
+
+                font-size: 22px;
+
+                z-index: 1100;
+
+                cursor: pointer;
+
+                backdrop-filter: blur(6px);
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            }
+
+
+            /* 菜单出现后的暗色背景 */
+            .nav-overlay {
+                display: block;
+
+                position: fixed;
+                inset: 0;
+
+                background: rgba(0, 0, 0, 0.25);
+
+                opacity: 0;
+                visibility: hidden;
+
+                transition:
+                    opacity 0.3s ease,
+                    visibility 0.3s ease;
+
+                z-index: 900;
+            }
+
+
+            .nav-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            /* 手机正文 */
             .container {
                 margin: 0;
                 width: 100%;
                 max-width: none;
-                padding: 24px 18px;
+
+                padding: 70px 18px 24px;
+
                 box-sizing: border-box;
             }
 
-            h1 {
-                font-size: 1.7rem;
+
+            /* 手机导航项目 */
+            nav ul {
+                gap: 6px;
             }
 
-            h2 {
-                font-size: 1.35rem;
+            nav ul li a {
+                padding: 12px 14px;
+                font-size: 1rem;
             }
 
-            .profile-pic {
-                width: 130px;
-                height: 130px;
-            }
 
+            /* Hobbies 图片 */
             .photo-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: none;
@@ -152,12 +260,15 @@
                 height: auto;
             }
 
+
+            /* Training 图片 */
             #trainings img {
                 width: 100% !important;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- 手机端菜单按钮 -->
@@ -193,7 +304,12 @@
         <!-- About Me -->
         <section id="about">
             <h2>About Me</h2>
-            <p>I am Qingqing Jiang, a PhD student at University of Münster. My primary research interests include geology, paleoclimatology, and astronomical chronology, with a focus on the orbital forcing on the early Eocene climate-carbon cycle. My master project most focused on the Paleocene-Eocene Thermal Maximum (PETM). And the method I used is most time series analysis to build the astronomical time scale, and finding the mechanisms of PETM. My PhD project is most about exploring Earth system models to understand the orbital forcing on climate systems.</p>
+            <p>I am Qingqing Jiang, a PhD student at University of Münster. My primary research interests include
+                geology, paleoclimatology, and astronomical chronology, with a focus on the orbital forcing on the early
+                Eocene climate-carbon cycle. My master project most focused on the Paleocene-Eocene Thermal Maximum
+                (PETM). And the method I used is most time series analysis to build the astronomical time scale, and
+                finding the mechanisms of PETM. My PhD project is most about exploring Earth system models to understand
+                the orbital forcing on climate systems.</p>
         </section>
 
         <!-- Education -->
@@ -220,7 +336,9 @@
         <!-- Research -->
         <section id="research">
             <h2>Research</h2>
-            <p>My research focuses on the early Eocene climate, investigating its climatic and sedimentological impacts using XRF analysis and astronomical chronology. And also orbital forcing on the early Eocene climate-carbon cycles.</p>
+            <p>My research focuses on the early Eocene climate, investigating its climatic and sedimentological impacts
+                using XRF analysis and astronomical chronology. And also orbital forcing on the early Eocene
+                climate-carbon cycles.</p>
             <ul>
                 <li>Sedimentation rates and orbital forcing during the PETM.</li>
                 <li>Earth system modeling using cGENIE to simulate climate impacts.</li>
@@ -231,13 +349,31 @@
         <section id="publications">
             <h2>Publications</h2>
             <ul>
-                <p><li><b>Qingqing Jiang</b>, Mingsong Li, Weiqi Yao, Ren Wei, Kaixuan Ji, Haotian Zhang, Zhijun Jin. 2025. Astrochronology of the Paleocene-Eocene Thermal Maximum on the East Tasman Plateau. Global and Planetary Change. https://doi.org/10.1016/j.gloplacha.2025.104882</li></p>
-                <p><li>Yilin Liu, Brandon B Bell, Elizabeth M Griffith, Mingsong Li, Yi Ge Zhang, <b>Qingqing Jiang</b>, Weiqi Yao. 2026. Decoupling of biological pump strength and efficiency in the eastern equatorial Pacific during the Middle Miocene Climate Optimum. Earth and planetary Science Letters. https://doi.org/10.1016/j.epsl.2026.120256</li></p>
+                <p>
+                    <li><b>Qingqing Jiang</b>, Mingsong Li, Weiqi Yao, Ren Wei, Kaixuan Ji, Haotian Zhang, Zhijun Jin.
+                        2025. Astrochronology of the Paleocene-Eocene Thermal Maximum on the East Tasman Plateau. Global
+                        and Planetary Change. https://doi.org/10.1016/j.gloplacha.2025.104882</li>
+                </p>
+                <p>
+                    <li>Yilin Liu, Brandon B Bell, Elizabeth M Griffith, Mingsong Li, Yi Ge Zhang, <b>Qingqing
+                            Jiang</b>, Weiqi Yao. 2026. Decoupling of biological pump strength and efficiency in the
+                        eastern equatorial Pacific during the Middle Miocene Climate Optimum. Earth and planetary
+                        Science Letters. https://doi.org/10.1016/j.epsl.2026.120256</li>
+                </p>
             </ul>
             <h2>Conferences</h2>
             <ul>
-                <p><li><b>Qingqing Jiang</b>, Mingsong Li, Nina M Papadomanolaki, David De Vleeschouwer. Turning the North Pacific Over: Earth System Model Experiments Reveal Precession-Driven Deep-Water Formation in the Early Eocene, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-3324, https://doi.org/10.5194/egusphere-egu26-3324, 2026.</li></p>
-                <p><li>Mingsong Li, <b>Qingqing Jiang</b>, Yujing Wu. A modern-like rate of climate change observed in the latest Paleocene, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-6048, https://doi.org/10.5194/egusphere-egu26-6048, 2026.</li></p>
+                <p>
+                    <li><b>Qingqing Jiang</b>, Mingsong Li, Nina M Papadomanolaki, David De Vleeschouwer. Turning the
+                        North Pacific Over: Earth System Model Experiments Reveal Precession-Driven Deep-Water Formation
+                        in the Early Eocene, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-3324,
+                        https://doi.org/10.5194/egusphere-egu26-3324, 2026.</li>
+                </p>
+                <p>
+                    <li>Mingsong Li, <b>Qingqing Jiang</b>, Yujing Wu. A modern-like rate of climate change observed in
+                        the latest Paleocene, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-6048,
+                        https://doi.org/10.5194/egusphere-egu26-6048, 2026.</li>
+                </p>
             </ul>
         </section>
 
@@ -254,7 +390,7 @@
         <section id="hobbies">
             <h2>Hobbies</h2>
             <p>I am passionate about dragon boating, fitness, travel, and reading. </p>
-            
+
             <!-- 照片网格布局 (3x2矩阵) -->
             <div class="photo-grid">
                 <img src="hobby-photos/hobby 1.jpg" alt="Hobby 1">
@@ -272,8 +408,10 @@
             <p>Feel free to reach out to me at:</p>
             <ul>
                 <li><strong>Email</strong>: qingqing.jiang@uni-muenster.de / jiang_qingqing@outlook.com</li>
-                <li><strong>ResearchGate</strong>: <a href="https://www.researchgate.net/profile/Qingqing-Jiang-2" target="_blank">Qingqing Jiang</a></li>
-                <li><strong>Linkedin</strong>: <a href="https://www.linkedin.com/in/qingqing-jiang-b87008417/" target="_blank">Qingqing Jiang</a></li>
+                <li><strong>ResearchGate</strong>: <a href="https://www.researchgate.net/profile/Qingqing-Jiang-2"
+                        target="_blank">Qingqing Jiang</a></li>
+                <li><strong>Linkedin</strong>: <a href="https://www.linkedin.com/in/qingqing-jiang-b87008417/"
+                        target="_blank">Qingqing Jiang</a></li>
                 <li><strong>Address</strong>: Room 520, Corrensstr. 24, 48149 Münster, Germany</li>
             </ul>
 
@@ -282,5 +420,98 @@
         </section>
     </div>
 
+    <script>
+        const nav = document.getElementById("sidebarNav");
+        const menuToggle = document.getElementById("menuToggle");
+        const overlay = document.getElementById("navOverlay");
+
+        function openMenu() {
+            nav.classList.add("open");
+            overlay.classList.add("active");
+        }
+
+        function closeMenu() {
+            nav.classList.remove("open");
+            overlay.classList.remove("active");
+        }
+
+
+        /* 点击菜单按钮 */
+        menuToggle.addEventListener("click", () => {
+
+            if (nav.classList.contains("open")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+
+        });
+
+
+        /* 点击外部区域关闭 */
+        overlay.addEventListener("click", closeMenu);
+
+
+        /* 点击导航项目之后关闭 */
+        document.querySelectorAll("#sidebarNav a").forEach(link => {
+
+            link.addEventListener("click", closeMenu);
+
+        });
+
+
+        /* =========================
+           Swipe gesture
+           ========================= */
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+
+        document.addEventListener("touchstart", function(event) {
+
+            touchStartX = event.changedTouches[0].screenX;
+
+        });
+
+
+        document.addEventListener("touchend", function(event) {
+
+            touchEndX = event.changedTouches[0].screenX;
+
+            handleSwipe();
+
+        });
+
+
+        function handleSwipe() {
+
+            const swipeDistance = touchEndX - touchStartX;
+
+            /*
+            从屏幕左侧向右滑
+            */
+            if (
+                touchStartX < 50 &&
+                swipeDistance > 70
+            ) {
+                openMenu();
+            }
+
+
+            /*
+            向左滑关闭菜单
+            */
+            if (
+                nav.classList.contains("open") &&
+                swipeDistance < -70
+            ) {
+                closeMenu();
+            }
+
+        }
+    </script>
+
 </body>
+
 </html>
