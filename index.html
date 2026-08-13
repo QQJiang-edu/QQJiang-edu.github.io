@@ -9,35 +9,55 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            padding: 20px;
-            background-color: #f4f4f4;
             margin: 0;
+            min-height: 100vh;
+            color: #252525;
+            background: #d9c8b6 url("assets/img/sausage-dog.jpeg") center / cover fixed no-repeat;
+        }
+
+        nav {
+            position: fixed;
+            inset: 0 auto 0 0;
+            z-index: 10;
+            width: 240px;
+            padding: 48px 24px;
+            box-sizing: border-box;
+            background: rgba(34, 27, 22, 0.88);
+            box-shadow: 4px 0 18px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(8px);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            background-color: #333;
+            flex-direction: column;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0;
         }
 
         nav ul li a {
+            display: block;
+            padding: 10px 12px;
             color: white;
             text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            background-color: rgba(255, 255, 255, 0.18);
+            transform: translateX(4px);
         }
 
         section {
             padding: 20px 0;
             border-bottom: 1px solid #ccc;
+            scroll-margin-top: 24px;
         }
 
         h1, h2 {
@@ -60,7 +80,13 @@
 
         .container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 0 auto 0 calc(240px + (100vw - 240px - 900px) / 2);
+            padding: 36px 48px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 28px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(6px);
         }
 
         .photo-grid {
@@ -85,6 +111,38 @@
 
         .education-list li {
             margin-bottom: 15px;
+        }
+
+        @media (max-width: 1180px) {
+            .container { margin-left: 240px; }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                width: 150px;
+                padding: 24px 12px;
+            }
+
+            nav ul { gap: 4px; }
+
+            nav ul li a {
+                padding: 8px;
+                font-size: 0.88rem;
+            }
+
+            .container {
+                margin-left: 150px;
+                padding: 24px 18px;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+            }
+
+            .photo-grid img { height: 180px; }
+
+            #trainings img { width: 100% !important; }
         }
     </style>
 </head>
