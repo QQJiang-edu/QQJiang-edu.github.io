@@ -1,0 +1,35 @@
+---
+layout: default
+title: Random Thoughts
+---
+
+<h1>Random Thoughts</h1>
+
+<p class="page-intro">
+  Some random thoughts, questions, and ideas that come to mind during research.
+</p>
+
+<ul class="post-list">
+
+  {% assign thoughts = site.posts
+      | where: "category", "random-thoughts"
+      | sort: "date"
+      | reverse %}
+
+  {% for post in thoughts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+
+      <span class="date">
+        {{ post.date | date: "%Y-%m-%d" }}
+      </span>
+
+      {% if post.excerpt %}
+        <p class="excerpt">
+          {{ post.excerpt | strip_html | truncate: 160 }}
+        </p>
+      {% endif %}
+    </li>
+  {% endfor %}
+
+</ul>
