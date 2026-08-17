@@ -305,6 +305,41 @@
             #trainings img {
                 width: 100% !important;
             }
+
+            /* =========================
+                Like button
+            ========================= */
+
+            .like-section {
+                text-align: center;
+                margin-top: 80px;
+                margin-bottom: 50px;
+                color: #777;
+            }
+
+            .like-section p {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+
+            .like-button {
+                background: none;
+                border: none;
+                font-size: 18px;
+                color: #777;
+                cursor: pointer;
+                padding: 8px 14px;
+                transition: all 0.2s ease;
+            }
+
+            .like-button:hover {
+                color: #d96b7b;
+                transform: scale(1.08);
+            }
+
+            .like-button.liked {
+                color: #d96b7b;
+            }
         }
     </style>
 </head>
@@ -467,6 +502,15 @@
 
             <a href="CV-Qingqing Jiang-202505.pdf" class="cv-button" download>CURRICULUM VITAE (maybe not updated)</a>
 
+        </section>
+
+        <!-- like-->
+        <section class="like-section">
+            <p>Thanks for stopping by.</p>
+
+            <button id="likeButton" class="like-button">
+                ♡ <span id="likeCount">0</span>
+            </button>
         </section>
     </div>
 
