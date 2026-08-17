@@ -515,6 +515,100 @@
     </div>
 
     <script>
+        /* =========================
+            Like button
+        ========================= */
+
+        const SUPABASE_URL =
+            "https://elbrkbecqaueuvaucpjg.supabase.co/rest/v1";
+
+        const SUPABASE_KEY =
+            "sb_publishable_mOYR6IUAC1ijzrcmlc4K1w_F3YbAxhd";
+
+        const likeButton = document.getElementById("likeButton");
+        const likeCount = document.getElementById("likeCount");
+
+        async function loadLikes() {
+
+            try {
+
+                const response = await fetch(
+                    `${SUPABASE_URL}/site_likes?id=eq.1&select=likes`,
+                    {
+                        headers: {
+                            apikey: SUPABASE_KEY
+                        }
+                    }
+                );
+
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    likeCount.textContent = data[0].likes;
+                }
+
+            } catch (error) {
+
+                console.error("Failed to load likes:", error);
+
+            }
+
+        }
+
+        async function addLike() {
+
+            if (localStorage.getItem("homepage-liked") === "true") {
+                return;
+            }
+
+            try {
+
+                const response = await fetch(
+                    `${SUPABASE_URL}/rpc/increment_site_likes`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            apikey: SUPABASE_KEY,
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({})
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Failed to add like");
+                }
+
+                const newCount = await response.json();
+
+                likeCount.textContent = newCount;
+
+                likeButton.classList.add("liked");
+
+                likeButton.innerHTML =
+                    `♥ <span id="likeCount">${newCount}</span>`;
+
+                localStorage.setItem("homepage-liked", "true");
+
+            } catch (error) {
+
+                console.error("Failed to add like:", error);
+
+            }
+
+        }
+        likeButton.addEventListener("click", addLike);
+
+        loadLikes();
+
+        if (localStorage.getItem("homepage-liked") === "true") {
+            likeButton.classList.add("liked");
+            likeButton.innerHTML =
+                `♥ <span id="likeCount">0</span>`;
+        }
+
         const nav = document.getElementById("sidebarNav");
         const menuToggle = document.getElementById("menuToggle");
         const overlay = document.getElementById("navOverlay");
